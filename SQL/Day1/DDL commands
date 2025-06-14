@@ -1,0 +1,72 @@
+mysql> create database java
+    -> ;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> use java;
+Database changed
+
+mysql> DESC STUDENTS;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| STUDENTID | int(11)     | NO   | PRI | NULL    |       |
+| FIRSTNAME | varchar(50) | YES  |     | NULL    |       |
+| LASTNAME  | varchar(50) | YES  |     | NULL    |       |
+| COURSEID  | int(11)     | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.06 sec)
+
+mysql> INSERT INTO STUDENTS (STUDENTID,FIRSTNAME,LASTNAME,COURSEID)
+    -> VALUES(1,'BINO','M',1001),
+    -> (2,'LOKESH','M',1002),
+    -> (3,'ALWIN','E',1003),
+    -> (4,'ABDUL','MUTHALIF',1004);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> SELECT*
+    -> FROM STUDENTS;
++-----------+-----------+----------+----------+
+| STUDENTID | FIRSTNAME | LASTNAME | COURSEID |
++-----------+-----------+----------+----------+
+|         1 | BINO      | M        |     1001 |
+|         2 | LOKESH    | M        |     1002 |
+|         3 | ALWIN     | E        |     1003 |
+|         4 | ABDUL     | MUTHALIF |     1004 |
++-----------+-----------+----------+----------+
+4 rows in set (0.00 sec)
+
+mysql> UPDATE STUDENTS
+    -> SET COURSEID=1001,COURSEID=1000
+    -> WHERE FIRSTNAME='BINO';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT*
+    -> FROM STUDENTS;
++-----------+-----------+----------+----------+
+| STUDENTID | FIRSTNAME | LASTNAME | COURSEID |
++-----------+-----------+----------+----------+
+|         1 | BINO      | M        |     1000 |
+|         2 | LOKESH    | M        |     1002 |
+|         3 | ALWIN     | E        |     1003 |
+|         4 | ABDUL     | MUTHALIF |     1004 |
++-----------+-----------+----------+----------+
+4 rows in set (0.00 sec)
+
+mysql> DELETE FROM STUDENTS
+    -> WHERE FIRSTNAME='ABDUL';
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM STUDENTS;
++-----------+-----------+----------+----------+
+| STUDENTID | FIRSTNAME | LASTNAME | COURSEID |
++-----------+-----------+----------+----------+
+|         1 | BINO      | M        |     1000 |
+|         2 | LOKESH    | M        |     1002 |
+|         3 | ALWIN     | E        |     1003 |
++-----------+-----------+----------+----------+
+3 rows in set (0.00 sec)
+
+mysql> DROP TABLE STUDENTS;
+Query OK, 0 rows affected (0.05 sec)
